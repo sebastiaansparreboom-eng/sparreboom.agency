@@ -10,6 +10,7 @@
   --stone: #6b6558;
   --ink: #19170f;
   --accent: #ff6a2b;
+  --accent-deep: #a83909;
   --hairline: rgba(25, 23, 15, 0.1);
   --hairline-light: rgba(246, 242, 236, 0.16);
 
@@ -607,6 +608,9 @@ a { color: inherit; text-decoration: none; }
   color: #fff;
   transform: translateY(-0.75rem);
 }
+.price-card--featured .price-card__list li.is-included::before {
+  color: var(--accent);
+}
 .price-card__badge {
   position: absolute;
   top: -0.9rem; left: clamp(1.75rem, 3vw, 2.5rem);
@@ -645,7 +649,7 @@ a { color: inherit; text-decoration: none; }
 .price-card__list li.is-included::before {
   content: "✓";
   position: absolute; left: 0; top: 0;
-  color: var(--accent);
+  color: var(--accent-deep);
   font-weight: 700;
 }
 .price-card > .btn { align-self: flex-start; }
@@ -678,7 +682,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--card);
   font-size: 1rem;
 }
-.pricing-terms strong { color: var(--accent); }
+.pricing-terms strong { color: var(--accent-deep); }
 @media (max-width: 720px) {
   .pricing-meta { flex-direction: column; align-items: flex-start; }
 }
@@ -917,7 +921,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(11,12,14,0.55) 0%, rgba(11,12,14,0.25) 40%, rgba(11,12,14,0.78) 100%);
+  background: linear-gradient(180deg, rgba(11,12,14,0.6) 0%, rgba(11,12,14,0.42) 40%, rgba(11,12,14,0.82) 100%);
 }
 .tour-hero__content { position: relative; z-index: 2; }
 .tour-section--hero .tour-eyebrow { color: #fff; opacity: 0.9; }
@@ -1177,7 +1181,7 @@ a { color: inherit; text-decoration: none; }
 }
 .addon__price {
   flex-shrink: 0;
-  color: var(--accent);
+  color: var(--accent-deep);
   font-size: 0.9rem;
   white-space: nowrap;
 }
