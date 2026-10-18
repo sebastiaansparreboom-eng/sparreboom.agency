@@ -187,15 +187,14 @@
       </div>
 
       <p class="demo-gallery__label reveal">This is how a finished job looks on the site</p>
-      <div class="before-after reveal">
-        <figure class="before-after__item">
-          <img src="images/stock-demo-before.jpg" alt="An interior mid-renovation with exposed brick and scaffolding" loading="lazy">
-          <figcaption>Before</figcaption>
-        </figure>
-        <figure class="before-after__item">
-          <img src="images/stock-demo-after.jpg" alt="A finished modern white kitchen renovation" loading="lazy">
-          <figcaption>After</figcaption>
-        </figure>
+      <div class="ba-slider reveal" data-ba-slider>
+        <img class="ba-slider__img ba-slider__img--after" src="images/stock-demo-after.jpg" alt="A finished modern white kitchen renovation">
+        <img class="ba-slider__img ba-slider__img--before" src="images/stock-demo-before.jpg" alt="An interior mid-renovation with exposed brick and scaffolding">
+        <span class="ba-slider__tag ba-slider__tag--before">Before</span>
+        <span class="ba-slider__tag ba-slider__tag--after">After</span>
+        <div class="ba-slider__handle" role="slider" tabindex="0" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <span class="ba-slider__grip"><span></span><span></span></span>
+        </div>
       </div>
     </div>
   </section>
@@ -207,20 +206,30 @@
       <h2 class="section__title reveal">Not a tradie myself. This is still how I think.</h2>
       <p class="section__intro reveal">Three real businesses, three different industries, same approach: find what makes you the obvious choice, then build the site around it.</p>
 
-      <div class="proof-grid">
-        <div class="proof-card reveal">
-          <h3>Dokterskeuring.nl</h3>
-          <p>A medical check-up service, built from scratch for an older audience. Converts at five percent, tracked since launch.</p>
-          <a class="work-card__link" href="https://dokterskeuring.nl/" target="_blank" rel="noopener">Visit the live site <span aria-hidden="true">→</span></a>
+      <div class="proof-carousel-wrap reveal">
+        <div class="proof-carousel" data-carousel>
+          <div class="proof-slide">
+            <div class="proof-slide__shot"><img src="images/work-vinami.jpg" alt="Vinami homepage" loading="lazy"></div>
+            <h3>Vinami</h3>
+            <p>A wine import business I grew from a one-man operation to a team of four. Website, email and sales funnel built to work together. Forty percent more customers within a year.</p>
+            <a class="work-card__link" href="https://vinami.nl/" target="_blank" rel="noopener">Visit the live site <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="proof-slide">
+            <div class="proof-slide__shot"><img src="images/work-dokterskeuring.jpg" alt="Dokterskeuring.nl homepage" loading="lazy"></div>
+            <h3>Dokterskeuring.nl</h3>
+            <p>A medical check-up service, built from scratch for an older audience. Converts at five percent, tracked since launch.</p>
+            <a class="work-card__link" href="https://dokterskeuring.nl/" target="_blank" rel="noopener">Visit the live site <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="proof-slide">
+            <div class="proof-slide__shot"><img src="images/work-terroir.jpg" alt="Terroir Grand Cru homepage" loading="lazy"></div>
+            <h3>Terroir Grand Cru</h3>
+            <p>A Gault&amp;Millau-rated restaurant in Hulst. Built to make booking a table the easiest part of the evening.</p>
+            <a class="work-card__link" href="https://terroirgrandcru.nl/" target="_blank" rel="noopener">Visit the live site <span aria-hidden="true">→</span></a>
+          </div>
         </div>
-        <div class="proof-card reveal">
-          <h3>Terroir Grand Cru</h3>
-          <p>A Gault&amp;Millau-rated restaurant in Hulst. Built to make booking a table the easiest part of the evening.</p>
-          <a class="work-card__link" href="https://terroirgrandcru.nl/" target="_blank" rel="noopener">Visit the live site <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="proof-card reveal">
-          <h3>Vinami</h3>
-          <p>A wine import business I grew from a one-man operation to a team of four. Website, email and sales funnel built to work together. Forty percent more customers within a year.</p>
+        <div class="proof-carousel-nav">
+          <button type="button" class="proof-carousel-nav__btn" data-carousel-prev aria-label="Previous">←</button>
+          <button type="button" class="proof-carousel-nav__btn" data-carousel-next aria-label="Next">→</button>
         </div>
       </div>
     </div>
