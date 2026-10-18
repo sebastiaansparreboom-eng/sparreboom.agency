@@ -633,6 +633,7 @@ a { color: inherit; text-decoration: none; }
   margin: 0 0 2rem;
   padding: 0;
   display: grid;
+  align-content: start;
   gap: 0.75rem;
   flex: 1;
 }
@@ -1066,16 +1067,6 @@ a { color: inherit; text-decoration: none; }
 .proof-carousel-nav__btn:hover { background: var(--card); border-color: var(--stone); }
 
 /* Package */
-.package-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-}
-.package-card {
-  max-width: 460px;
-  width: 100%;
-  transform: none;
-}
 .price-card__was {
   display: inline-block;
   font-size: 1.1rem;
@@ -1156,6 +1147,41 @@ a { color: inherit; text-decoration: none; }
 }
 .steps h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
 .steps p { color: var(--stone); font-size: 0.94rem; }
+
+/* Add-ons */
+.addons {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--hairline);
+}
+.addons__title { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.addons__intro { color: var(--stone); margin-bottom: 1.75rem; }
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem var(--gap);
+}
+.addon {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 0 var(--hairline);
+}
+.addon__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.addon__price {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.addon p { color: var(--stone); font-size: 0.9rem; }
 
 /* Guarantee */
 .guarantee-box {
@@ -1307,12 +1333,14 @@ a { color: inherit; text-decoration: none; }
   .proof-slide { flex-basis: 82%; }
   .tour-section--services { grid-template-columns: 1fr; }
   .about--reverse .about__photos { order: 0; }
+  .addons-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 560px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .social-grid { grid-template-columns: repeat(2, 1fr); }
   .hero__trust { grid-template-columns: 1fr 1fr; }
+  .addons-grid { grid-template-columns: 1fr; }
   .hero__actions .btn { width: 100%; justify-content: center; }
 
   .logos__item { width: 155px; height: 115px; padding: 7px; }
