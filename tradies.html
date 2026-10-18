@@ -175,13 +175,24 @@
             <div class="tour-service"><span class="tour-service__dot"></span>Decks &amp; pergolas</div>
           </div>
 
+          <div class="tour-section tour-section--why">
+            <div class="tour-why__item"><span class="tour-why__check">✓</span>Fixed price, agreed before we start</div>
+            <div class="tour-why__item"><span class="tour-why__check">✓</span>Licensed, insured, on time</div>
+            <div class="tour-why__item"><span class="tour-why__check">✓</span>4.9★ from 47 jobs on Google</div>
+          </div>
+
           <div class="tour-section tour-section--quote">
             <p>"On time, on budget, every time. We've already booked them for the next job."</p>
           </div>
 
-          <div class="tour-section tour-section--contact">
-            <span>Free quote within 48 hours</span>
-            <a class="tour-cta tour-cta--ghost" href="#">0400 000 000</a>
+          <div class="tour-section tour-section--form">
+            <p class="tour-form__label">Request a free quote</p>
+            <div class="tour-form__fields">
+              <span class="tour-form__field">Your name</span>
+              <span class="tour-form__field">Phone number</span>
+            </div>
+            <a class="tour-cta" href="#">Send it</a>
+            <p class="tour-form__note">Or call 0400 000 000. Replies within a day.</p>
           </div>
 
           <div class="mock-browser__fade" aria-hidden="true"></div>
@@ -263,6 +274,60 @@
     </div>
     <p class="moment__line reveal">Good work speaks.</p>
     <p class="moment__line moment__line--sub reveal">A good site makes sure people hear it first.</p>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="section" id="quiz">
+    <div class="container">
+      <p class="eyebrow reveal">30 seconds</p>
+      <h2 class="section__title reveal">Not sure which one fits?</h2>
+      <p class="section__intro reveal">Three quick questions, no typing. I'll point you at the right package.</p>
+
+      <div class="quiz reveal" data-quiz>
+        <div class="quiz__progress" aria-hidden="true">
+          <span class="quiz__progress-dot is-active"></span>
+          <span class="quiz__progress-dot"></span>
+          <span class="quiz__progress-dot"></span>
+        </div>
+
+        <div class="quiz__step is-active" data-quiz-step="0">
+          <p class="quiz__question">How big is your crew?</p>
+          <div class="quiz__options">
+            <button type="button" class="quiz__option" data-tier="starter">Just me</button>
+            <button type="button" class="quiz__option" data-tier="first">2–4 people</button>
+            <button type="button" class="quiz__option" data-tier="every">5–10 people</button>
+          </div>
+        </div>
+
+        <div class="quiz__step" data-quiz-step="1">
+          <p class="quiz__question">What's your website situation right now?</p>
+          <div class="quiz__options">
+            <button type="button" class="quiz__option" data-tier="starter">No website yet</button>
+            <button type="button" class="quiz__option" data-tier="first">I have one, but it's dated</button>
+            <button type="button" class="quiz__option" data-tier="every">I have one, want more from it</button>
+          </div>
+        </div>
+
+        <div class="quiz__step" data-quiz-step="2">
+          <p class="quiz__question">What do you need most right now?</p>
+          <div class="quiz__options">
+            <button type="button" class="quiz__option" data-tier="starter">Just be findable online</button>
+            <button type="button" class="quiz__option" data-tier="first">Look more professional than the competition</button>
+            <button type="button" class="quiz__option" data-tier="every">Reach more suburbs, more repeat work</button>
+          </div>
+        </div>
+
+        <div class="quiz__result" data-quiz-result>
+          <p class="quiz__result-eyebrow">Based on your answers</p>
+          <h3 class="quiz__result-name" data-quiz-result-name></h3>
+          <p class="quiz__result-reason" data-quiz-result-reason></p>
+          <div class="quiz__result-actions">
+            <a href="#package" class="btn btn--accent" data-quiz-see>See this package</a>
+            <a href="https://wa.me/31649661038" target="_blank" rel="noopener" class="btn btn--ghost-dark" data-quiz-whatsapp>Message me about it</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- PACKAGE -->
