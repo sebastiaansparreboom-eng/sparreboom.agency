@@ -1225,32 +1225,21 @@ a { color: inherit; text-decoration: none; }
 }
 .addons__title { font-size: 1.4rem; margin-bottom: 0.5rem; }
 .addons__intro { color: var(--stone); margin-bottom: 1.75rem; }
-.addons-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem var(--gap);
-}
-.addon {
-  background: #fff;
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  box-shadow: 0 1px 0 var(--hairline);
-}
-.addon__head {
+.addons-list { border-top: 1px solid var(--hairline); }
+.addons-list .faq-item__toggle { padding: 1.1rem 0; }
+.addon-row__label {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
+  gap: 0.4rem 0.75rem;
+  flex: 1;
 }
-.addon__price {
-  flex-shrink: 0;
+.addon-row__name { font-weight: 600; font-size: 1rem; }
+.addon-row__price {
   color: var(--accent-deep);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   white-space: nowrap;
 }
-.addon p { color: var(--stone); font-size: 0.9rem; }
 
 /* Quiz */
 .quiz {
@@ -1476,14 +1465,12 @@ a { color: inherit; text-decoration: none; }
   .proof-slide { flex-basis: 82%; }
   .tour-section--services { grid-template-columns: 1fr; }
   .about--reverse .about__photos { order: 0; }
-  .addons-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 560px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .social-grid { grid-template-columns: repeat(2, 1fr); }
   .hero__trust { grid-template-columns: 1fr 1fr; }
-  .addons-grid { grid-template-columns: 1fr; }
   .hero__actions .btn { width: 100%; justify-content: center; }
 
   .logos__item { width: 155px; height: 115px; padding: 7px; }
