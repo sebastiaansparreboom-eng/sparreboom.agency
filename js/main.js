@@ -167,17 +167,60 @@
     setPosition(50);
   });
 
-  /* ---------- Proof carousel ---------- */
+  /* ---------- Carousels (proof, pricing) ---------- */
   document.querySelectorAll("[data-carousel]").forEach(function (carousel) {
-    var wrap = carousel.closest(".proof-carousel-wrap") || carousel.parentElement;
+    var wrap = carousel.closest("[data-carousel-wrap]") || carousel.parentElement;
     var prevBtn = wrap.querySelector("[data-carousel-prev]");
     var nextBtn = wrap.querySelector("[data-carousel-next]");
+    var dotsWrap = wrap.querySelector("[data-carousel-dots]");
+    var cards = Array.prototype.slice.call(carousel.children);
+
     function scrollByCard(dir) {
-      var card = carousel.querySelector(".proof-slide");
+      var card = cards[0];
       var amount = card ? card.getBoundingClientRect().width + 24 : carousel.clientWidth * 0.8;
       carousel.scrollBy({ left: dir * amount, behavior: reduceMotion ? "auto" : "smooth" });
     }
     if (prevBtn) prevBtn.addEventListener("click", function () { scrollByCard(-1); });
     if (nextBtn) nextBtn.addEventListener("click", function () { scrollByCard(1); });
+
+    if (dotsWrap && cards.length > 1) {
+      cards.forEach(function (card, i) {
+        var dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "carousel-dot";
+        dot.setAttribute("aria-label", "Go to item " + (i + 1));
+        dot.addEventListener("click", function () {
+          carousel.scrollTo({
+            left: card.offsetLeft - carousel.offsetLeft,
+            behavior: reduceMotion ? "auto" : "smooth"
+          });
+        });
+        dotsWrap.appendChild(dot);
+      });
+      var dots = Array.prototype.slice.call(dotsWrap.children);
+      var ticking = false;
+      function updateActiveDot() {
+        ticking = false;
+        var center = carousel.scrollLeft + carousel.clientWidth / 2;
+        var closest = 0;
+        var closestDist = Infinity;
+        cards.forEach(function (card, i) {
+          var cardCenter = card.offsetLeft - carousel.offsetLeft + card.clientWidth / 2;
+          var dist = Math.abs(cardCenter - center);
+          if (dist < closestDist) {
+            closestDist = dist;
+            closest = i;
+          }
+        });
+        dots.forEach(function (d, i) { d.classList.toggle("is-active", i === closest); });
+      }
+      carousel.addEventListener("scroll", function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(updateActiveDot);
+        }
+      }, { passive: true });
+      updateActiveDot();
+    }
   });
 })();
