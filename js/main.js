@@ -7,6 +7,7 @@
   var nav = document.getElementById("nav");
   var lastScrollState = false;
   function updateNavState() {
+    if (!nav) return;
     var scrolled = window.scrollY > 40;
     if (scrolled !== lastScrollState) {
       nav.classList.toggle("is-scrolled", scrolled);
@@ -114,4 +115,69 @@
     boom.style.transform = "scale(0.9)";
     boomIo.observe(boom);
   }
+
+  /* ---------- Before/after drag slider ---------- */
+  document.querySelectorAll("[data-ba-slider]").forEach(function (slider) {
+    var before = slider.querySelector(".ba-slider__img--before");
+    var handle = slider.querySelector(".ba-slider__handle");
+    if (!before || !handle) return;
+    var dragging = false;
+
+    function setPosition(percent) {
+      percent = Math.max(0, Math.min(100, percent));
+      before.style.clipPath = "inset(0 " + (100 - percent) + "% 0 0)";
+      handle.style.left = percent + "%";
+      handle.setAttribute("aria-valuenow", String(Math.round(percent)));
+    }
+
+    function percentFromEvent(e) {
+      var rect = slider.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      return (x / rect.width) * 100;
+    }
+
+    function onMove(e) {
+      if (!dragging) return;
+      setPosition(percentFromEvent(e));
+    }
+    function onUp() {
+      dragging = false;
+    }
+    function onDown(e) {
+      dragging = true;
+      handle.focus();
+      setPosition(percentFromEvent(e));
+    }
+
+    slider.addEventListener("pointerdown", onDown);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+
+    handle.addEventListener("keydown", function (e) {
+      var current = parseFloat(handle.style.left) || 50;
+      if (e.key === "ArrowLeft") {
+        setPosition(current - 5);
+        e.preventDefault();
+      } else if (e.key === "ArrowRight") {
+        setPosition(current + 5);
+        e.preventDefault();
+      }
+    });
+
+    setPosition(50);
+  });
+
+  /* ---------- Proof carousel ---------- */
+  document.querySelectorAll("[data-carousel]").forEach(function (carousel) {
+    var wrap = carousel.closest(".proof-carousel-wrap") || carousel.parentElement;
+    var prevBtn = wrap.querySelector("[data-carousel-prev]");
+    var nextBtn = wrap.querySelector("[data-carousel-next]");
+    function scrollByCard(dir) {
+      var card = carousel.querySelector(".proof-slide");
+      var amount = card ? card.getBoundingClientRect().width + 24 : carousel.clientWidth * 0.8;
+      carousel.scrollBy({ left: dir * amount, behavior: reduceMotion ? "auto" : "smooth" });
+    }
+    if (prevBtn) prevBtn.addEventListener("click", function () { scrollByCard(-1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { scrollByCard(1); });
+  });
 })();
