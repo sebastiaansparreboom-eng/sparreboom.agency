@@ -30,7 +30,7 @@
 
 <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="page-tradies">
+<body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -48,10 +48,11 @@
     <div class="tradie-hero__media">
       <img src="images/stock-hero-tradie.jpg" alt="A tradesman cutting a plank of wood with a circular saw, sawdust flying" loading="eager" fetchpriority="high">
       <div class="hero__scrim"></div>
+      <div class="tradie-hero__shade"></div>
     </div>
     <div class="container">
       <p class="eyebrow eyebrow--light">For tradies, renovators, electricians, plumbers &amp; builders</p>
-      <h1 class="tradie-hero__title">Clients judge your craft<br>before you've laid a single brick.</h1>
+      <h1 class="tradie-hero__title">Clients judge your craft before you've laid a single brick.</h1>
       <p class="tradie-hero__sub">A homeowner finds three tradies on their phone and picks who to call in about ten seconds. Your website is what makes that decision for you, or against you.</p>
       <div class="hero__actions">
         <a href="https://wa.me/61411734925" class="btn btn--accent" target="_blank" rel="noopener">Get my free site review</a>
@@ -127,10 +128,16 @@
           <div class="mock-browser">
             <div class="mock-browser__bar"><span></span><span></span><span></span><div class="mock-browser__url">hartleybuildco.com.au</div></div>
             <div class="mock-browser__body mock-browser__body--new">
-              <p class="tour-eyebrow">Hartley Build Co.</p>
-              <h4 class="tour-h1">Renovations &amp; carpentry, built to last.</h4>
-              <p class="tour-sub">Newcastle, NSW. Licensed &amp; insured.</p>
-              <a class="tour-cta" href="#">Get a free quote</a>
+              <div class="tour-section tour-section--hero">
+                <img class="tour-hero__bg" src="images/stock-demo-after.jpg" alt="" loading="lazy">
+                <div class="tour-hero__scrim"></div>
+                <div class="tour-hero__content">
+                  <p class="tour-eyebrow">Hartley Build Co.</p>
+                  <h4 class="tour-h1">Renovations &amp; carpentry, built to last.</h4>
+                  <p class="tour-sub">Newcastle, NSW. Licensed &amp; insured.</p>
+                  <a class="tour-cta" href="#">Get a free quote</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -150,10 +157,14 @@
         <div class="mock-browser__body mock-browser__body--new mock-browser__body--tall">
 
           <div class="tour-section tour-section--hero">
-            <p class="tour-eyebrow">Hartley Build Co.</p>
-            <h4 class="tour-h1">Renovations &amp; carpentry, built to last.</h4>
-            <p class="tour-sub">Newcastle, NSW. Licensed &amp; insured. Small team, no subcontracted surprises.</p>
-            <a class="tour-cta" href="#">Get a free quote</a>
+            <img class="tour-hero__bg" src="images/stock-demo-after.jpg" alt="" loading="lazy">
+            <div class="tour-hero__scrim"></div>
+            <div class="tour-hero__content">
+              <p class="tour-eyebrow">Hartley Build Co.</p>
+              <h4 class="tour-h1">Renovations &amp; carpentry, built to last.</h4>
+              <p class="tour-sub">Newcastle, NSW. Licensed &amp; insured. Small team, no subcontracted surprises.</p>
+              <a class="tour-cta" href="#">Get a free quote</a>
+            </div>
           </div>
 
           <div class="tour-section tour-section--services">
@@ -381,10 +392,6 @@
     <a href="https://wa.me/61411734925" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 </footer>
-
-<div class="sticky-cta">
-  <a href="https://wa.me/61411734925" class="btn btn--accent" target="_blank" rel="noopener">Free site review</a>
-</div>
 
 <script src="js/main.js"></script>
 </body>
