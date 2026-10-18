@@ -764,18 +764,24 @@ a { color: inherit; text-decoration: none; }
   object-fit: cover;
   object-position: center 35%;
 }
+.tradie-hero__shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 11, 13, 0.38);
+}
 .tradie-hero .container,
 .tradie-hero > .hero__trust { position: relative; z-index: 1; }
 .tradie-hero__title {
   font-size: var(--fs-hero);
-  max-width: 18ch;
+  max-width: 15ch;
   margin-bottom: 1.25rem;
+  text-wrap: balance;
 }
 .tradie-hero__sub {
   font-size: var(--fs-lede);
-  max-width: 50ch;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 2rem;
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.75rem;
 }
 
 /* Compare */
@@ -889,6 +895,34 @@ a { color: inherit; text-decoration: none; }
   background: var(--light);
   color: var(--ink);
 }
+.tour-section--hero {
+  position: relative;
+  overflow: hidden;
+  margin: -1.5rem -1.5rem 1.5rem;
+  padding: 2.5rem 1.5rem 2rem;
+  min-height: 220px;
+  display: flex;
+  align-items: flex-end;
+}
+.tour-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.tour-hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(11,12,14,0.55) 0%, rgba(11,12,14,0.25) 40%, rgba(11,12,14,0.78) 100%);
+}
+.tour-hero__content { position: relative; z-index: 2; }
+.tour-section--hero .tour-eyebrow { color: #fff; opacity: 0.9; }
+.tour-section--hero .tour-h1 { color: #fff; }
+.tour-section--hero .tour-sub { color: rgba(255, 255, 255, 0.85); }
+
 .tour-eyebrow {
   font-size: 0.75rem;
   font-weight: 700;
@@ -1034,8 +1068,8 @@ a { color: inherit; text-decoration: none; }
 }
 .price-card__value {
   flex-shrink: 0;
-  font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
   font-weight: 600;
   white-space: nowrap;
 }
@@ -1139,9 +1173,6 @@ a { color: inherit; text-decoration: none; }
 .moment__media img { width: 100%; height: 100%; object-fit: cover; }
 .moment--photo .moment__line { position: relative; z-index: 1; }
 
-/* Sticky mobile CTA */
-.sticky-cta { display: none; }
-
 /* ============================================================
    Responsive
    ============================================================ */
@@ -1181,22 +1212,6 @@ a { color: inherit; text-decoration: none; }
   .about--reverse .about__photos { order: 0; }
 }
 
-@media (max-width: 720px) {
-  .sticky-cta {
-    display: flex;
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    z-index: 95;
-    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-    background: rgba(11, 12, 14, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-top: 1px solid var(--hairline-light);
-  }
-  .sticky-cta .btn { width: 100%; justify-content: center; }
-  body.page-tradies { padding-bottom: 68px; }
-}
-
 @media (max-width: 560px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .social-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1205,4 +1220,8 @@ a { color: inherit; text-decoration: none; }
 
   .logos__item { width: 155px; height: 115px; padding: 7px; }
   .logos__group { gap: 1.5rem; padding-right: 1.5rem; }
+
+  .tradie-hero { padding-top: 2rem; }
+  .tradie-hero__title { font-size: 2.15rem; max-width: 13ch; }
+  .tradie-hero__sub { font-size: 1.02rem; margin-bottom: 1.5rem; }
 }
