@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sparreboom Agency — Websites for tradies & renovation businesses</title>
-<meta name="description" content="A fixed-price website package for tradies, renovators and small building businesses who want to be the one people call first.">
+<meta name="description" content="A fixed-price website package for tradies, renovators, electricians, plumbers and builders who want to be the one people call first.">
 <link rel="canonical" href="https://sparreboom.agency/tradies.html">
 
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -17,12 +17,12 @@
 <meta property="og:site_name" content="Sparreboom Agency">
 <meta property="og:url" content="https://sparreboom.agency/tradies.html">
 <meta property="og:title" content="Sparreboom Agency — Websites for tradies & renovation businesses">
-<meta property="og:description" content="A fixed-price website package for tradies, renovators and small building businesses who want to be the one people call first.">
+<meta property="og:description" content="A fixed-price website package for tradies, renovators, electricians, plumbers and builders who want to be the one people call first.">
 <meta property="og:locale" content="en_US">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sparreboom Agency — Websites for tradies & renovation businesses">
-<meta name="twitter:description" content="A fixed-price website package for tradies, renovators and small building businesses who want to be the one people call first.">
+<meta name="twitter:description" content="A fixed-price website package for tradies, renovators, electricians, plumbers and builders who want to be the one people call first.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,14 +30,14 @@
 
 <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="page-tradies">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="bare-nav">
   <div class="container bare-nav__inner">
     <a href="/" class="bare-nav__brand">Sparreboom Agency</a>
-    <a href="https://wa.me/31649661038" class="btn btn--small btn--accent" target="_blank" rel="noopener">WhatsApp me</a>
+    <a href="https://wa.me/31649661038" class="btn btn--small btn--accent" target="_blank" rel="noopener">Free site review</a>
   </div>
 </header>
 
@@ -45,19 +45,57 @@
 
   <!-- HERO -->
   <section class="tradie-hero">
+    <div class="tradie-hero__media">
+      <img src="images/stock-hero-tradie.jpg" alt="A tradesman cutting a plank of wood with a circular saw, sawdust flying" loading="eager" fetchpriority="high">
+      <div class="hero__scrim"></div>
+    </div>
     <div class="container">
-      <p class="eyebrow eyebrow--light">For tradies, renovators &amp; builders</p>
+      <p class="eyebrow eyebrow--light">For tradies, renovators, electricians, plumbers &amp; builders</p>
       <h1 class="tradie-hero__title">Clients judge your craft<br>before you've laid a single brick.</h1>
       <p class="tradie-hero__sub">A homeowner finds three tradies on their phone and picks who to call in about ten seconds. Your website is what makes that decision for you, or against you.</p>
       <div class="hero__actions">
-        <a href="https://wa.me/31649661038" class="btn btn--accent" target="_blank" rel="noopener">Message me on WhatsApp</a>
+        <a href="https://wa.me/31649661038" class="btn btn--accent" target="_blank" rel="noopener">Get my free site review</a>
         <a href="#package" class="btn btn--ghost-light">See the package</a>
+      </div>
+    </div>
+    <ul class="hero__trust reveal">
+      <li><span class="hero__trust-title">No contracts</span>Pay once. The site is yours to keep.</li>
+      <li><span class="hero__trust-title">Pay when you're happy</span>See the design first, then decide.</li>
+      <li><span class="hero__trust-title">Built for your trade</span>Not a template with your logo pasted on.</li>
+      <li><span class="hero__trust-title">Live within a week</span>Most sites go live within seven days.</li>
+    </ul>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how-it-works">
+    <div class="container about">
+      <div class="about__text">
+        <p class="eyebrow reveal">How it works</p>
+        <h2 class="section__title reveal">Three steps. Not ten.</h2>
+        <p class="about__lede reveal">No briefing document, no brand workshop. Just enough to build something good.</p>
+        <ol class="steps reveal">
+          <li>
+            <h3>Send a few photos on WhatsApp</h3>
+            <p>Recent jobs, your logo if you have one, your number. That's enough to start.</p>
+          </li>
+          <li>
+            <h3>I build it</h3>
+            <p>A full site built around your trade, usually live within a week.</p>
+          </li>
+          <li>
+            <h3>You say yes, or you don't</h3>
+            <p>You only pay once you're happy with what you see. No pressure either way.</p>
+          </li>
+        </ol>
+      </div>
+      <div class="about__photos reveal">
+        <img src="images/stock-blueprint.jpg" alt="A tradesman reviewing a rolled-out blueprint and writing notes" loading="lazy">
       </div>
     </div>
   </section>
 
   <!-- COMPARE -->
-  <section class="section" id="compare">
+  <section class="section section--card" id="compare">
     <div class="container">
       <p class="eyebrow reveal">Who would you call?</p>
       <h2 class="section__title reveal">Same trade. Two first impressions.</h2>
@@ -101,7 +139,7 @@
   </section>
 
   <!-- FULL DEMO TOUR -->
-  <section class="section section--card" id="demo">
+  <section class="section" id="demo">
     <div class="container">
       <p class="eyebrow reveal">The demo</p>
       <h2 class="section__title reveal">This is what you'd actually get.</h2>
@@ -136,11 +174,23 @@
           <div class="mock-browser__fade" aria-hidden="true"></div>
         </div>
       </div>
+
+      <p class="demo-gallery__label reveal">This is how a finished job looks on the site</p>
+      <div class="before-after reveal">
+        <figure class="before-after__item">
+          <img src="images/stock-demo-before.jpg" alt="An interior mid-renovation with exposed brick and scaffolding" loading="lazy">
+          <figcaption>Before</figcaption>
+        </figure>
+        <figure class="before-after__item">
+          <img src="images/stock-demo-after.jpg" alt="A finished modern white kitchen renovation" loading="lazy">
+          <figcaption>After</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
   <!-- PROOF -->
-  <section class="section" id="proof">
+  <section class="section section--card" id="proof">
     <div class="container">
       <p class="eyebrow reveal">Proof</p>
       <h2 class="section__title reveal">Not a tradie myself. This is still how I think.</h2>
@@ -165,12 +215,40 @@
     </div>
   </section>
 
+  <!-- GUARANTEE -->
+  <section class="section" id="guarantee">
+    <div class="container about about--reverse">
+      <div class="about__photos reveal">
+        <img src="images/stock-guarantee-kitchen.jpg" alt="A couple cooking together in a newly renovated kitchen" loading="lazy">
+      </div>
+      <div class="about__text">
+        <p class="eyebrow reveal">The guarantee</p>
+        <h2 class="section__title reveal">If it's not right, it's not finished.</h2>
+        <div class="guarantee-box reveal">
+          <h3>You don't pay for a site you wouldn't put your name on.</h3>
+          <p>I build the design first. If you don't love it, I rebuild it, free, as many times as it takes. If you're still not happy, you pay nothing.</p>
+          <p>And if I haven't got your site live within two weeks of having everything I need from you, I knock AUD $150 off.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE MOMENT (photo banner) -->
+  <section class="moment moment--photo">
+    <div class="moment__media">
+      <img src="images/stock-moment-welding.jpg" alt="Close-up of a welder at work with sparks flying" loading="lazy">
+      <div class="hero__scrim"></div>
+    </div>
+    <p class="moment__line reveal">Good work speaks.</p>
+    <p class="moment__line moment__line--sub reveal">A good site makes sure people hear it first.</p>
+  </section>
+
   <!-- PACKAGE -->
   <section class="section section--card" id="package">
     <div class="container">
       <p class="eyebrow reveal">The package</p>
       <h2 class="section__title reveal">The First Call Package.</h2>
-      <p class="section__intro reveal">One fixed price. No surprises, no monthly contract to think about.</p>
+      <p class="section__intro reveal">Everything you need to be the one they call first, not just a website. One fixed price, no monthly contract to think about.</p>
 
       <div class="package-wrap">
         <div class="price-card price-card--featured package-card reveal">
@@ -179,16 +257,22 @@
             <span class="price-card__amount">AUD $990</span>
             <span class="price-card__was">AUD $1,490</span>
           </p>
-          <p class="price-card__desc">Introductory price for the first three clients. AUD $1,490 after that. One-off payment, yours to keep.</p>
-          <ul class="price-card__list">
-            <li class="is-included">Home, services, about &amp; contact pages</li>
-            <li class="is-included">Contact form</li>
-            <li class="is-included">Clickable phone number</li>
-            <li class="is-included">Basic SEO setup</li>
-            <li class="is-included">One round of revisions</li>
-            <li class="is-included">Google Business Profile set up</li>
-            <li class="is-included">One year of free upkeep</li>
+          <p class="price-card__desc">Introductory price for the first three clients. AUD $1,490 for good once the third site is live. One-off payment, yours to keep.</p>
+          <ul class="price-card__list price-card__list--valued">
+            <li class="is-included">Home, services, about &amp; contact pages<span class="price-card__value">$600 value</span></li>
+            <li class="is-included">Contact form<span class="price-card__value">$100 value</span></li>
+            <li class="is-included">Clickable phone number<span class="price-card__value">$50 value</span></li>
+            <li class="is-included">Basic SEO &amp; Google Maps setup<span class="price-card__value">$350 value</span></li>
+            <li class="is-included">One round of revisions<span class="price-card__value">$150 value</span></li>
+            <li class="is-included">Google Business Profile, set up &amp; optimised<span class="price-card__value">$250 value</span></li>
+            <li class="is-included">A simple system to turn finished jobs into 5-star Google reviews<span class="price-card__value">$200 value</span></li>
+            <li class="is-included">One year of free upkeep &amp; small edits<span class="price-card__value">$600 value</span></li>
+            <li class="is-included">A free site review before you commit to anything<span class="price-card__value">$150 value</span></li>
           </ul>
+          <div class="price-card__stack-total">
+            <span>Total value</span>
+            <strong>AUD $2,450+</strong>
+          </div>
           <ul class="price-card__list price-card__list--excluded">
             <li>Not included: domain name, photography, extra pages</li>
           </ul>
@@ -199,12 +283,92 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <p class="eyebrow reveal">Questions</p>
+      <h2 class="section__title reveal">Before you message me.</h2>
+
+      <div class="faq-list">
+        <div class="faq-item reveal" data-accordion-item>
+          <button type="button" class="faq-item__toggle js-accordion-toggle" aria-expanded="false">
+            <span class="faq-item__q">I don't have good photos of my work yet.</span>
+            <span class="faq-item__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel">
+            <div class="faq-item__panel-inner">
+              <div class="faq-item__panel-content">
+                <p>That's fine. Send what you have, even phone photos. I'll fill the gaps with stock photography for launch, and you can swap in real job photos whenever you're ready, at no extra cost.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-accordion-item>
+          <button type="button" class="faq-item__toggle js-accordion-toggle" aria-expanded="false">
+            <span class="faq-item__q">I'm not good with computers.</span>
+            <span class="faq-item__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel">
+            <div class="faq-item__panel-inner">
+              <div class="faq-item__panel-content">
+                <p>You don't need to be. You send photos and info over WhatsApp, I build the site, you look at it and say yes or no. That's the whole job on your side.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-accordion-item>
+          <button type="button" class="faq-item__toggle js-accordion-toggle" aria-expanded="false">
+            <span class="faq-item__q">What happens after the free year of upkeep?</span>
+            <span class="faq-item__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel">
+            <div class="faq-item__panel-inner">
+              <div class="faq-item__panel-content">
+                <p>We talk about it then. No auto-renewal, no surprise bill. If you want me to keep looking after it, we agree a simple rate together, month to month.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-accordion-item>
+          <button type="button" class="faq-item__toggle js-accordion-toggle" aria-expanded="false">
+            <span class="faq-item__q">Can't I just use Wix or GoDaddy myself?</span>
+            <span class="faq-item__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel">
+            <div class="faq-item__panel-inner">
+              <div class="faq-item__panel-content">
+                <p>You can. It'll take you a weekend you don't have, and it'll look like it did. This is a site built around your trade, live within a week, without you touching a page builder.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-accordion-item>
+          <button type="button" class="faq-item__toggle js-accordion-toggle" aria-expanded="false">
+            <span class="faq-item__q">Do I own the website?</span>
+            <span class="faq-item__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel">
+            <div class="faq-item__panel-inner">
+              <div class="faq-item__panel-content">
+                <p>Yes. It's built for you, not rented to you.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="container">
       <h2 class="contact__title reveal">Ready to be the one they call first?</h2>
-      <p class="reveal">Send a few photos of recent work on WhatsApp, and I'll come back with a plan.</p>
-      <a href="https://wa.me/31649661038" class="btn btn--accent reveal" target="_blank" rel="noopener">Message me on WhatsApp</a>
+      <p class="reveal">Send a photo of a recent job on WhatsApp. I'll send back a short, honest read on what your current online presence is costing you. Free, no pitch.</p>
+      <a href="https://wa.me/31649661038" class="btn btn--accent reveal" target="_blank" rel="noopener">Get my free site review</a>
       <p class="contact__number reveal">+31 6 49661038</p>
     </div>
   </section>
@@ -217,6 +381,10 @@
     <a href="https://wa.me/31649661038" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 </footer>
+
+<div class="sticky-cta">
+  <a href="https://wa.me/31649661038" class="btn btn--accent" target="_blank" rel="noopener">Free site review</a>
+</div>
 
 <script src="js/main.js"></script>
 </body>
