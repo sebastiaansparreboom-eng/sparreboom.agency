@@ -223,4 +223,108 @@
       updateActiveDot();
     }
   });
+
+  /* ---------- Package quiz ---------- */
+  document.querySelectorAll("[data-quiz]").forEach(function (quiz) {
+    var steps = Array.prototype.slice.call(quiz.querySelectorAll("[data-quiz-step]"));
+    var dots = Array.prototype.slice.call(quiz.querySelectorAll(".quiz__progress-dot"));
+    var resultEl = quiz.querySelector("[data-quiz-result]");
+    var resultName = quiz.querySelector("[data-quiz-result-name]");
+    var resultReason = quiz.querySelector("[data-quiz-result-reason]");
+    var seeBtn = quiz.querySelector("[data-quiz-see]");
+    var waBtn = quiz.querySelector("[data-quiz-whatsapp]");
+    if (!steps.length || !resultEl) return;
+
+    var answers = [];
+    var tallies = { starter: 0, first: 0, every: 0 };
+
+    var tierInfo = {
+      starter: {
+        name: "The Starter Call",
+        reason: "You're after the basics done properly: findable, callable, nothing you don't need yet.",
+        cardIndex: 1
+      },
+      first: {
+        name: "The First Call Package",
+        reason: "The one most tradies land on: a full site, a reviews system, and a year of free upkeep.",
+        cardIndex: 0
+      },
+      every: {
+        name: "The Every Call Package",
+        reason: "With a crew that size, more pages and ongoing content will do more work for you.",
+        cardIndex: 2
+      }
+    };
+
+    function showStep(index) {
+      steps.forEach(function (step, i) { step.classList.toggle("is-active", i === index); });
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle("is-active", i === index);
+        dot.classList.toggle("is-done", i < index);
+      });
+    }
+
+    function finish() {
+      var winner = "first";
+      var best = -1;
+      ["starter", "first", "every"].forEach(function (tier) {
+        if (tallies[tier] > best) {
+          best = tallies[tier];
+          winner = tier;
+        }
+      });
+      var info = tierInfo[winner];
+
+      steps.forEach(function (step) { step.classList.remove("is-active"); });
+      dots.forEach(function (dot) {
+        dot.classList.add("is-done");
+        dot.classList.remove("is-active");
+      });
+      if (resultName) resultName.textContent = info.name;
+      if (resultReason) resultReason.textContent = info.reason;
+      resultEl.classList.add("is-active");
+
+      if (seeBtn) {
+        seeBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          var carousel = document.querySelector(".pricing-carousel");
+          var card = carousel ? carousel.children[info.cardIndex] : null;
+          if (card) {
+            card.scrollIntoView({
+              behavior: reduceMotion ? "auto" : "smooth",
+              block: "center",
+              inline: "center"
+            });
+            card.classList.add("is-highlighted");
+            window.setTimeout(function () { card.classList.remove("is-highlighted"); }, 2300);
+          } else {
+            var pkgSection = document.getElementById("package");
+            if (pkgSection) pkgSection.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+          }
+        });
+      }
+
+      if (waBtn) {
+        var msg = "Hi! I just did the quick quiz on your tradies page.\n\n" +
+          "My answers: " + answers.join(", ") + ".\n\n" +
+          "You recommended: " + info.name + ". Can we chat?";
+        waBtn.setAttribute("href", "https://wa.me/31649661038?text=" + encodeURIComponent(msg));
+      }
+    }
+
+    steps.forEach(function (step, i) {
+      step.querySelectorAll(".quiz__option").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var tier = btn.getAttribute("data-tier");
+          tallies[tier] = (tallies[tier] || 0) + 1;
+          answers.push(btn.textContent.trim());
+          if (i < steps.length - 1) {
+            showStep(i + 1);
+          } else {
+            finish();
+          }
+        });
+      });
+    });
+  });
 })();
