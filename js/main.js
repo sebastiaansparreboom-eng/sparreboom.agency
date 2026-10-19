@@ -479,7 +479,7 @@
       },
       every: {
         name: "The Every Call Package",
-        reason: "With a crew that size, suburb pages and a month of social content do more of the work for you. AUD $2,490, one-off.",
+        reason: "Suburb pages and a month of social content do more of the work for you, across the suburbs you cover. AUD $2,490, one-off.",
         cardIndex: 2
       }
     };
