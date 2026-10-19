@@ -1519,6 +1519,7 @@ html:has(.bare-nav) { scroll-padding-top: 4.5rem; }
   color: rgba(255, 255, 255, 0.78);
 }
 .hero__trust-desc { display: block; }
+.tradie-hero > .hero__trust { margin-top: 2.25rem; }
 
 /* Steps in a row */
 .steps__day {
@@ -1939,8 +1940,24 @@ html:has(.bare-nav) { scroll-padding-top: 4.5rem; }
   .tradie-hero { padding-top: 2rem; }
   .tradie-hero__title { font-size: 2.15rem; max-width: 13ch; }
   .tradie-hero__sub { font-size: 1.02rem; margin-bottom: 1.5rem; }
-  .hero__micro { margin-bottom: 2rem; }
   .hero__trust-desc { display: none; }
+  .tradie-hero { padding-bottom: 2.25rem; }
+  .tradie-hero > .hero__trust { gap: 1rem 1.25rem; padding-top: 1.5rem; padding-bottom: 0; }
+  .tradie-hero .hero__trust-title {
+    position: relative;
+    padding-left: 1.4rem;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+  .tradie-hero .hero__trust-title::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
 
   .tradie-hero ~ .section { padding: 3.5rem 0; }
   .tradie-hero ~ .section .section__intro { margin-bottom: 2rem; }
