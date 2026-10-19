@@ -31,6 +31,7 @@
         navMobile.classList.remove("is-open");
         navToggle.classList.remove("is-open");
         navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Open menu");
       });
     });
   }
@@ -121,7 +122,7 @@
   var SPOTS_LEFT = 3;
   var foundingOpen = SPOTS_LEFT > 0;
   document.querySelectorAll("[data-spots-left]").forEach(function (el) {
-    el.textContent = SPOTS_LEFT + (SPOTS_LEFT === 1 ? " spot" : " spots");
+    el.textContent = SPOTS_LEFT + (SPOTS_LEFT === 1 ? "\u00a0spot" : "\u00a0spots");
   });
 
   /* ---------- Tradies page: personal link (?n=Dave&p=first) ---------- */
@@ -130,7 +131,11 @@
   var params = new URLSearchParams(window.location.search);
   var packageIndex = { starter: 0, first: 1, every: 2 };
 
-  var visitorName = (params.get("n") || "").replace(/[^\p{L}\p{M}' .-]/gu, "").trim().slice(0, 30);
+  var rawName = Array.from((params.get("n") || "").replace(/[\u2018\u2019\u02bc]/g, "'").replace(/[^\p{L}\p{M}' .-]/gu, ""));
+  var visitorName = rawName.slice(0, 30).join("");
+  if (rawName.length > 30) visitorName = visitorName.replace(/\s+\S*$/, "");
+  visitorName = visitorName.trim();
+  if (!/\p{L}/u.test(visitorName)) visitorName = "";
   if (visitorName) {
     visitorName = visitorName.charAt(0).toUpperCase() + visitorName.slice(1);
     waPrefix = "Hi Sebastiaan, it's " + visitorName + ". We spoke on the phone. ";
@@ -195,7 +200,7 @@
     var contactSection = document.getElementById("contact");
 
     function setNavHidden(hidden) {
-      if (hidden && autoNav.contains(document.activeElement)) hidden = false;
+      if (hidden && autoNav.querySelector(":focus-visible")) hidden = false;
       autoNav.classList.toggle("is-hidden", hidden);
     }
 
@@ -299,8 +304,10 @@
 
     handle.addEventListener("keydown", function (e) {
       var next = null;
-      if (e.key === "ArrowLeft") next = position - 5;
-      else if (e.key === "ArrowRight") next = position + 5;
+      if (e.key === "ArrowLeft" || e.key === "ArrowDown") next = position - 5;
+      else if (e.key === "ArrowRight" || e.key === "ArrowUp") next = position + 5;
+      else if (e.key === "PageDown") next = position - 10;
+      else if (e.key === "PageUp") next = position + 10;
       else if (e.key === "Home") next = 0;
       else if (e.key === "End") next = 100;
       if (next !== null) {
@@ -321,6 +328,7 @@
     var tabs = Array.prototype.slice.call(wrap.querySelectorAll("[data-carousel-goto]"));
     var cards = Array.prototype.slice.call(carousel.children);
     var dots = [];
+    var steered = false;
 
     function offsetFor(card) {
       var cardRect = card.getBoundingClientRect();
@@ -329,9 +337,14 @@
       return left - (carousel.clientWidth - cardRect.width) / 2;
     }
 
+    function maxScroll() {
+      return carousel.scrollWidth - carousel.clientWidth;
+    }
+
     function goTo(index, smooth) {
       var card = cards[index];
       if (!card) return;
+      if (smooth) steered = true;
       carousel.scrollTo({
         left: offsetFor(card),
         behavior: smooth && !reduceMotion ? "smooth" : "auto"
@@ -346,6 +359,24 @@
     }
     if (prevBtn) prevBtn.addEventListener("click", function () { scrollByCard(-1); });
     if (nextBtn) nextBtn.addEventListener("click", function () { scrollByCard(1); });
+    ["pointerdown", "wheel", "keydown"].forEach(function (type) {
+      carousel.addEventListener(type, function () { steered = true; }, { passive: true });
+    });
+
+    // Keyboard focus on a card that sits half off-screen brings the card into view.
+    carousel.addEventListener("focusin", function (e) {
+      if (!e.target.matches(":focus-visible")) return;
+      var index = cards.findIndex(function (c) { return c.contains(e.target); });
+      if (index < 0) return;
+      var cardRect = cards[index].getBoundingClientRect();
+      var railRect = carousel.getBoundingClientRect();
+      if (cardRect.left >= railRect.left - 1 && cardRect.right <= railRect.right + 1) return;
+      if (getComputedStyle(cards[index]).scrollSnapAlign.indexOf("center") > -1) {
+        goTo(index, false);
+      } else {
+        carousel.scrollTo({ left: cardRect.left - railRect.left + carousel.scrollLeft });
+      }
+    });
 
     if (dotsWrap && cards.length > 1) {
       cards.forEach(function (card, i) {
@@ -370,14 +401,12 @@
     var railTicking = false;
     function updateActive() {
       railTicking = false;
-      var center = carousel.scrollLeft + carousel.clientWidth / 2;
-      var railLeft = carousel.getBoundingClientRect().left;
+      var max = maxScroll();
       var closest = 0;
       var closestDist = Infinity;
       cards.forEach(function (card, i) {
-        var rect = card.getBoundingClientRect();
-        var cardCenter = rect.left - railLeft + carousel.scrollLeft + rect.width / 2;
-        var dist = Math.abs(cardCenter - center);
+        var target = Math.max(0, Math.min(max, offsetFor(card)));
+        var dist = Math.abs(target - carousel.scrollLeft);
         if (dist < closestDist) {
           closestDist = dist;
           closest = i;
@@ -403,7 +432,9 @@
       updateActive();
     }
     centerStart();
-    window.addEventListener("load", centerStart);
+    window.addEventListener("load", function () {
+      if (!steered) centerStart();
+    });
   });
 
   /* ---------- Payback sum ---------- */
@@ -464,22 +495,22 @@
     var tierInfo = {
       starter: {
         name: "The Starter Call",
-        reason: "The basics done properly: findable, callable, nothing you don't need yet. AUD $590, one-off." +
+        reason: "The basics done properly: findable, callable, nothing you don't need yet. AUD\u00a0$590, one-off." +
           (foundingOpen
-            ? " Worth knowing: while the founding price lasts, The First Call is only AUD $400 more, and includes a year of upkeep."
+            ? " Worth knowing: while the founding price lasts, The First Call is only AUD\u00a0$400 more, and includes a year of upkeep."
             : " Worth knowing: The First Call adds three pages, the reviews system and a year of upkeep."),
         cardIndex: 0
       },
       first: {
         name: "The First Call Package",
         reason: "A full site, a reviews system and a year of free upkeep. " +
-          (foundingOpen ? "AUD $990 at the founding client price, AUD $1,490 once three sites are live." : "AUD $1,490, one-off.") +
+          (foundingOpen ? "AUD\u00a0$990 at the founding client price, AUD\u00a0$1,490 once three sites are live." : "AUD\u00a0$1,490, one-off.") +
           " It's the one I'd pick for most crews.",
         cardIndex: 1
       },
       every: {
         name: "The Every Call Package",
-        reason: "With a crew that size, suburb pages and a month of social content do more of the work for you. AUD $2,490, one-off.",
+        reason: "Suburb pages and a month of social content do more of the work for you, across the suburbs you cover. AUD\u00a0$2,490, one-off.",
         cardIndex: 2
       }
     };
@@ -541,7 +572,7 @@
         var card = carousel && currentInfo ? carousel.children[currentInfo.cardIndex] : null;
         if (!card) return;
         e.preventDefault();
-        card.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+        card.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
         if (carousel.carouselGoTo) carousel.carouselGoTo(currentInfo.cardIndex, true);
         card.classList.add("is-highlighted");
         window.setTimeout(function () { card.classList.remove("is-highlighted"); }, 2300);
